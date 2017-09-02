@@ -10,7 +10,7 @@ footer: true
 ha_category: Automation Examples
 ---
 
-This requires a [Dark Sky](/components/sensor.darksky/) sensor with the condition `precip_intensity` that tells if it's raining or not. You could also experiment with other attributes such as `cloud_cover`.
+This requires a [Dark Sky](/components/sensor.darksky/) sensor with the condition `dark_sky_summary` that tells if it's raining or not. You could also experiment with other attributes such as `cloud_cover`.
 
 Turn on a light in the living room when it starts raining, someone is home, and it's afternoon or later.
 
@@ -19,7 +19,7 @@ automation:
   - alias: 'Rainy Day'
     trigger:
       - platform: state
-        entity_id: sensor.precip_intensity
+        entity_id: sensor.dark_sky_summary
         to: 'rain'
     condition:
       - condition: state
@@ -39,7 +39,7 @@ And then of course turn off the lamp when it stops raining but only if it's with
   - alias: 'Rain is over'
     trigger:
       - platform: state
-        entity_id: sensor.precip_intensity
+        entity_id: sensor.dark_sky_summary
         to: 'None'
     condition:
       - condition: sun
